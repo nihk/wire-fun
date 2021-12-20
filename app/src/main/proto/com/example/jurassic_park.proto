@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package com.example.jurassic_park;
+
+import "com/example/dinosaurs.proto";
+import "com/example/geology.proto";
+
+service JurassicPark {
+    rpc Visit(com.example.dinosaurs.Dinosaur) returns (com.example.dinosaurs.Response);
+}

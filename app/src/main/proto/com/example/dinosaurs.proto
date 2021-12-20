@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.example.dinosaurs;
+
+import "com/example/geology.proto";
+import "google/protobuf/any.proto";
+
+message Response {
+    string payload = 1;
+}
+
+message Dinosaur {
+    // Common name of this dinosaur, like "Stegosaurus".
+    string name = 1;
+
+
+    // URLs with images of this dinosaur.
+    repeated string picture_urls = 2;
+
+    reserved 3, 4 to 6;
+    reserved "foo", "bar";
+
+    com.example.geology.Period period = 7;
+
+    DinoBino dinoBino = 8;
+
+    enum DinoBino {
+        UNKNOWN = 0;
+        reserved 1;
+        BLAH = 2;
+    }
+
+    oneof somethin {
+        string colour = 9;
+        uint32 age = 10;
+    }
+
+    map<string, google.protobuf.Any> body = 11;
+
+}
